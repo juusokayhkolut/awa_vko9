@@ -3,11 +3,12 @@ import MyList from "./MyList";
 
 const MyContainer: React.FC = () => {
   const [items, setItems] = useState<{ id: string; text: string; clicked: boolean }[]>([]);
+  const [inputText, setInputText] = useState("");
 
   const addItem = () => {
     const newItem = {
       id: Math.random().toString(),
-      text: "New item",
+      text: inputText,
       clicked: false,
     };
     setItems([...items, newItem]);
@@ -22,7 +23,7 @@ const MyContainer: React.FC = () => {
   return (
     <div className="App">
       <h1>Hello World!</h1>
-      <textarea placeholder="textbox"/>
+      <textarea placeholder="textbox" value={inputText} onChange={(e) => setInputText(e.target.value)}/>
       <button onClick={addItem}>button</button>
       <MyList header="My List" items={items} updateList={updateList} />
     </div>
