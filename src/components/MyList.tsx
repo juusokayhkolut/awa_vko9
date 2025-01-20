@@ -12,20 +12,25 @@ interface ListProps {
   toggleItemClick?: (id: string) => void;
 }
 
+
 const MyList: React.FC<ListProps> = ({ header, items, toggleItemClick }) => {
   return (
     <div>
       <h2>{header}</h2>
       <ol>
-        {items.map(item => (
-          <li
-            key={item.id}
-            onClick={() => toggleItemClick && toggleItemClick(item.id)}
-            style={{ textDecoration: item.clicked ? 'line-through' : 'none' }}
-          >
-            {item.text}
-          </li>
-        ))}
+        {items.length > 0 ? (
+          items.map((item) => (
+            <li
+              key={item.id}
+              onClick={() => toggleItemClick && toggleItemClick(item.id)}
+              style={{ textDecoration: item.clicked ? "line-through" : "none" }}
+            >
+              {item.text}
+            </li>
+          ))
+        ) : (
+          <li>No items available</li> // Render fallback
+        )}
       </ol>
     </div>
   );
