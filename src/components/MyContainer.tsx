@@ -22,8 +22,8 @@ const MyContainer: React.FC = () => {
   return (
     <div className="App">
       <h1>Hello World!</h1>
-      <textarea placeholder="Enter item text" />
-      <button onClick={addItem}>Add Item</button>
+      <textarea placeholder="textbox"/>
+      <button onClick={addItem}>button</button>
       <MyList header="My List" items={items} updateList={updateList} />
     </div>
   );
