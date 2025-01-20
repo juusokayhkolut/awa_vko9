@@ -30,7 +30,7 @@ const MyList: React.FC<ListProps> = ({ header, items, toggleItemClick }) => {
           ))
         ) : (
           <li
-          style={{ textDecoration: "line-through" }}
+          style={{ textDecoration: "none" }}
           >No items available</li>
         )}
       </ol>
