@@ -1,5 +1,5 @@
 import React from "react";
-import MyContainer from "../components/MyContainer";
+import MyContainer from "./components/MyContainer";
 
 const App: React.FC = () => {
   return <MyContainer />;
