@@ -23,14 +23,14 @@ const MyList: React.FC<ListProps> = ({ header, items, toggleItemClick }) => {
             <li
               key={item.id}
               onClick={() => toggleItemClick && toggleItemClick(item.id)}
-              style={{ textDecoration: item.clicked ? "line-through" : "none" }}
+              style={{ textDecoration: item.clicked ? "line-through" : "" }}
             >
               {item.text}
             </li>
           ))
         ) : (
           <li
-          style={{ textDecoration: "none" }}
+          style={{ textDecoration: "" }}
           >No items available</li>
         )}
       </ol>
