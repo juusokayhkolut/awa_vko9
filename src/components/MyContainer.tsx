@@ -1,31 +1,40 @@
-import React, { useState } from "react";
-import MyList from "./MyList";
+import React, { useState } from 'react';
+import MyList from './MyList';
+
+type Item = {
+  id: string;
+  text: string;
+  clicked: boolean;
+};
 
 const MyContainer: React.FC = () => {
-  const [items, setItems] = useState<{ id: string; text: string; clicked: boolean }[]>([]);
-  const [inputText, setInputText] = useState("");
+  const [items, setItems] = useState<Item[]>([]);
+  const [inputValue, setInputValue] = useState('');
 
   const addItem = () => {
-    const newItem = {
-      id: Math.random().toString(),
-      text: inputText,
+    const newItem: Item = {
+      id: Date.now().toString(),
+      text: inputValue,
       clicked: false,
     };
     setItems([...items, newItem]);
+    setInputValue('');
   };
 
-  const updateList = (id: string) => {
-    setItems(items.map(item => 
-      item.id === id ? { ...item, clicked: !item.clicked } : item
-    ));
+  const toggleItemClick = (id: string) => {
+    setItems(items.map(item => item.id === id ? { ...item, clicked: !item.clicked } : item));
   };
 
   return (
-    <div className="App">
-      <h1>Hello World!</h1>
-      <textarea placeholder="textbox" value={inputText} onChange={(e) => setInputText(e.target.value)}/>
-      <button onClick={addItem}>button</button>
-      <MyList header="My List" items={items} updateList={updateList} />
+    <div>
+      <h1>Hello, World!</h1>
+      <textarea
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        placeholder="Enter item text"
+      />
+      <button onClick={addItem}>Add Item</button>
+      <MyList header="My List" items={items} toggleItemClick={toggleItemClick} />
     </div>
   );
 };
