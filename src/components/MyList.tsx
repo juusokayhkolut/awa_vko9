@@ -9,7 +9,7 @@ type Item = {
 interface ListProps {
   header: string;
   items: Item[];
-  toggleItemClick: (id: string) => void;
+  toggleItemClick?: (id: string) => void;
 }
 
 const MyList: React.FC<ListProps> = ({ header, items, toggleItemClick }) => {
@@ -20,7 +20,7 @@ const MyList: React.FC<ListProps> = ({ header, items, toggleItemClick }) => {
         {items.map(item => (
           <li
             key={item.id}
-            onClick={() => toggleItemClick(item.id)}
+            onClick={() => toggleItemClick && toggleItemClick(item.id)}
             style={{ textDecoration: item.clicked ? 'line-through' : 'none' }}
           >
             {item.text}
