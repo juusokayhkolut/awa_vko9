@@ -27,7 +27,7 @@ const MyContainer: React.FC = () => {
 
   return (
     <div>
-      <h1>Hello, World!</h1>
+      <h1>Hello World!</h1>
       <textarea
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
