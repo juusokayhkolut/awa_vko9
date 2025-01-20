@@ -22,7 +22,7 @@ const MyContainer: React.FC = () => {
   };
 
   const toggleItemClick = (id: string) => {
-    setItems(items.map(item => item.id === id ? { ...item, clicked: !item.clicked } : item));
+    setItems(items.map(item => item.id === id ? { ...item, clicked: true } : item));
   };
 
   return (
